@@ -153,6 +153,15 @@ button:hover{filter:brightness(.98);transform:translateY(-1px)}
 
       <label for="materiais">Materiais disponíveis (opcional)</label>
       <textarea id="materiais" placeholder="Ex.: massinha, EVA, bambolê, bolas, jogos de encaixe e objetos da rotina."></textarea>
+
+       <div style="margin-top:16px;">
+         <label style="display:flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;">
+           <input id="ativarNaoQuero" type="checkbox" onchange="toggleNaoQuero()" style="width:auto;">
+           O que eu não quero na estratégia
+         </label>
+         <p class="small">Opcional. Marque quando quiser indicar recursos, atividades ou abordagens que não devem aparecer.</p>
+         <textarea id="naoQuero" style="display:none;min-height:100px;" placeholder="Ex.: Não quero cartões nem histórias. Quero uma atividade prática com materiais concretos."></textarea>
+       </div>
     </section>
 
     <section class="card no-print">
@@ -273,6 +282,12 @@ function abrirAba(aba){
   document.getElementById('btnPlanejamento').classList.toggle('active', !estrategias);
 }
 
+function toggleNaoQuero(){
+  const checkbox = document.getElementById('ativarNaoQuero');
+  const campo = document.getElementById('naoQuero');
+  campo.style.display = checkbox.checked ? 'block' : 'none';
+}
+
 function trocarInstrumento(){
   const instrumento = document.getElementById('instrumento').value;
   document.getElementById('areaPortageBox').style.display =
@@ -320,6 +335,9 @@ async function gerarEstrategias(){
   const perfil = limparTexto(document.getElementById('perfil').value);
   const nivelApoio = document.getElementById('nivelApoio').value;
   const materiais = limparTexto(document.getElementById('materiais').value);
+  const naoQuero = document.getElementById('ativarNaoQuero').checked
+    ? limparTexto(document.getElementById('naoQuero').value)
+    : '';
 
   if(!chave){
     alert('Cole sua chave da API Groq.');
@@ -348,7 +366,8 @@ async function gerarEstrategias(){
     idade ? `Faixa etária: ${idade} anos.` : '',
     nivelApoio ? `Nível de necessidade de apoio: ${nivelApoio}.` : '',
     perfil ? `Perfil: ${perfil}.` : '',
-    materiais ? `Materiais disponíveis: ${materiais}.` : ''
+    materiais ? `Materiais disponíveis: ${materiais}.` : '',
+    naoQuero ? `RESTRIÇÕES DA PROFESSORA — NÃO UTILIZAR NA ESTRATÉGIA: ${naoQuero}.` : ''
   ].filter(Boolean).join('\n');
 
   const prompt = `Você é uma pedagoga especialista em educação especial, estimulação precoce e elaboração de estratégias pedagógicas.
@@ -366,6 +385,7 @@ ${textoReferencia}
 - Não repetir o objetivo como estratégia.
 - Não criar habilidades diferentes da solicitada.
 - Considerar o instrumento de referência, a faixa etária, o nível de necessidade de apoio, o perfil e os materiais apenas quando forem informados.
+- Se houver "RESTRIÇÕES DA PROFESSORA — NÃO UTILIZAR NA ESTRATÉGIA", obedecer rigorosamente essa orientação e não utilizar os recursos, atividades ou abordagens indicados.
 - Ajustar a complexidade das atividades, a mediação e as adaptações conforme o nível de necessidade de apoio.
 - Adaptar as propostas à faixa etária, evitando atividades infantis para adolescentes ou adultos.
 - Usar linguagem adequada ao trabalho pedagógico e à educação especial.
@@ -542,9 +562,11 @@ function baixarArquivo(blob,nome){
 
 function limparTudo(){
   if(!confirm('Deseja limpar o objetivo atual?')) return;
-  ['idade','objetivo','perfil','materiais'].forEach(id => {
+  ['idade','objetivo','perfil','materiais','naoQuero'].forEach(id => {
     document.getElementById(id).value='';
   });
+  document.getElementById('ativarNaoQuero').checked=false;
+  toggleNaoQuero();
   document.getElementById('instrumento').value='Portage';
   document.getElementById('area').value='automatica';
   document.getElementById('quantidade').value='4';
