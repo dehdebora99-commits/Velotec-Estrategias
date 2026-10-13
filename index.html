@@ -6,54 +6,45 @@
 <title>Velotec Estratégias</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f8fb;color:#1f2937}
-header{background:linear-gradient(135deg,#1f5f78,#4a9ab8);color:#fff;padding:42px 20px 38px;text-align:center;box-shadow:0 8px 24px rgba(31,95,120,.22)}
-.header-inner{max-width:900px;margin:0 auto}
-.header-icon{width:64px;height:64px;margin:0 auto 14px;border-radius:18px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:34px;border:1px solid rgba(255,255,255,.22)}
-header h1{margin:0;font-size:34px}
-header p{margin:10px auto 0;font-size:16px;opacity:.96;max-width:680px;line-height:1.5}
-main{max-width:1050px;margin:24px auto;padding:0 16px 40px}
-.card{background:#fff;border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 6px 18px rgba(31,95,120,.10)}
-h2{margin-top:0;color:#1f5f78}
-label{font-weight:700;display:block;margin:12px 0 6px}
-input,select,textarea{width:100%;border:1px solid #cfe0e8;border-radius:12px;padding:12px;font-size:15px;font-family:Arial,Helvetica,sans-serif;background:#fff}
+:root{--creme:#fff9e8;--amarelo:#fff0c2;--dourado:#ffbd38;--dourado-escuro:#e8a51c;--marrom:#57301b;--texto:#293548;--suave:#748198;--borda:#e6dfd0;--branco:#fffdf8}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#fff9e8 0%,#fff1c8 48%,#fff8e4 100%);color:var(--texto)}
+header{position:relative;overflow:hidden;background-color:#fff8e4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220'%3E%3Cg fill='none' stroke='%23ffbd38' stroke-opacity='.78' stroke-width='4'%3E%3Cpath d='M15 20 43 4 71 20 71 52 43 68 15 52Z M88 8 116 -8 144 8 144 40 116 56 88 40Z M161 20 189 4 217 20 217 52 189 68 161 52Z M-22 92 6 76 34 92 34 124 6 140 -22 124Z M27 164 55 148 83 164 83 196 55 212 27 196Z'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220'%3E%3Cg fill='none' stroke='%23ffbd38' stroke-opacity='.78' stroke-width='4'%3E%3Cpath d='M15 20 43 4 71 20 71 52 43 68 15 52Z M88 8 116 -8 144 8 144 40 116 56 88 40Z M161 20 189 4 217 20 217 52 189 68 161 52Z M-22 92 6 76 34 92 34 124 6 140 -22 124Z M27 164 55 148 83 164 83 196 55 212 27 196Z'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(120deg,#fff9e8 0%,#fff3d0 50%,#ffe08a 100%);background-repeat:no-repeat,no-repeat,no-repeat;background-position:left top,right bottom,center;background-size:190px 100px,190px 100px,cover;color:var(--marrom);padding:30px 20px 28px;text-align:center;box-shadow:0 4px 14px rgba(181,133,37,.13);border-bottom:4px solid rgba(255,255,255,.85)}
+.header-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.header-icon{width:64px;height:64px;margin:0 auto 12px;border-radius:18px;background:rgba(255,255,255,.84);display:flex;align-items:center;justify-content:center;font-size:34px;border:1px solid rgba(255,189,56,.55);box-shadow:0 4px 12px rgba(220,161,37,.18)}
+header h1{margin:0;font-size:34px;color:var(--marrom);font-weight:800}
+header p{margin:9px auto 0;font-size:16px;color:#68452e;max-width:680px;line-height:1.5;opacity:1}
+main{max-width:1050px;margin:20px auto;padding:0 16px 40px}
+.card{background:rgba(255,255,255,.94);border:1px solid rgba(255,195,69,.62);border-radius:17px;padding:20px;margin-bottom:12px;box-shadow:0 5px 16px rgba(151,111,41,.09)}
+h2{margin-top:0;color:var(--marrom);font-size:20px}
+label{font-weight:700;display:block;margin:12px 0 6px;color:#343b49}
+input,select,textarea{width:100%;border:1px solid #d5deea;border-radius:9px;padding:11px 12px;font-size:14px;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--texto)}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(255,189,56,.28);border-color:#efb42b}
 textarea{min-height:105px;resize:vertical;line-height:1.45}
 #objetivo{min-height:140px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.notice{background:#eef8fb;border-left:5px solid #4a9ab8;padding:12px 14px;border-radius:10px;font-size:14px;line-height:1.45}
-.small{font-size:13px;color:#64748b}
+.notice{background:#fff6d9;border:1px solid #ffdc7e;border-left:5px solid #ffb51d;padding:12px 14px;border-radius:10px;font-size:14px;line-height:1.45;color:#73501f}
+.small{font-size:13px;color:var(--suave)}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
-button{border:0;border-radius:12px;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer}
-.primary{background:#1f5f78;color:#fff}
-.secondary{background:#e5f0f5;color:#1f5f78}
-.danger{background:#f4e1e1;color:#7a2d2d}
+button{border:0;border-radius:10px;padding:12px 17px;font-size:14px;font-weight:700;cursor:pointer;transition:filter .15s,transform .15s}
+.primary{background:#713814;color:#fff}
+.secondary{background:#f0e8dc;color:#63351d}
+.danger{background:#f9dfe0;color:#a92b2b}
 button:disabled{opacity:.6;cursor:not-allowed}
 button:hover{filter:brightness(.98);transform:translateY(-1px)}
-#resultado{min-height:260px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #cfe0e8;border-radius:14px;padding:18px}
-.gerando{color:#1f5f78;font-style:italic}
-.tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.tab-button{background:#e5f0f5;color:#1f5f78;border:1px solid #cfe0e8}
-.tab-button.active{background:#1f5f78;color:#fff;border-color:#1f5f78}
+#resultado{min-height:260px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #d9e1ec;border-radius:10px;padding:16px;color:var(--texto)}
+.gerando{color:#a36b0b;font-style:italic}
+.tabs{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tab-button{background:#f0e8dc;color:#63351d;border:1px solid #eadfce;border-radius:11px;padding:12px 18px}
+.tab-button.active{background:#713814;color:#fff;border:2px solid #ffcc53;box-shadow:0 0 0 3px rgba(255,189,56,.17)}
 .tab-content{display:none}
 .tab-content.active{display:block}
-#resultadoPlanejamento{min-height:320px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #cfe0e8;border-radius:14px;padding:18px}
+#resultadoPlanejamento{min-height:320px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #d9e1ec;border-radius:10px;padding:16px;color:var(--texto)}
 #objetivoPlanejamento{min-height:130px}
 #especificidades{min-height:120px}
 #materiaisPlanejamento{min-height:100px}
 #interessesDificuldades{min-height:100px}
-@media(max-width:760px){
-  .grid{grid-template-columns:1fr}
-  header h1{font-size:27px}
-  .actions button{width:100%}
-}
-@media print{
-  body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12pt;color:#000}
-  header,.no-print,.form-card{display:none!important}
-  main{margin:0;max-width:none;padding:0}
-  .card{box-shadow:none;border:none;padding:0;margin:0}
-  #resultado{border:none;padding:0;font-size:12pt;line-height:1.5}
-  @page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}
-}
+@media(max-width:760px){.grid{grid-template-columns:1fr}header h1{font-size:27px}.actions button{width:100%}main{padding-left:10px;padding-right:10px}.card{padding:15px}}
+@media print{body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12pt;color:#000}header,.no-print,.form-card{display:none!important}main{margin:0;max-width:none;padding:0}.card{box-shadow:none;border:none;padding:0;margin:0}#resultado,#resultadoPlanejamento{border:none;padding:0;font-size:12pt;line-height:1.5}@page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}}
 </style>
 </head>
 <body>
