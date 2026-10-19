@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velotec Estratégias</title>
+<style>
+*{box-sizing:border-box}
+:root{--creme:#fff9e8;--amarelo:#fff0c2;--dourado:#ffbd38;--dourado-escuro:#e8a51c;--marrom:#57301b;--texto:#293548;--suave:#748198;--borda:#e6dfd0;--branco:#fffdf8}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#fff9e8 0%,#fff1c8 48%,#fff8e4 100%);color:var(--texto)}
+header{position:relative;overflow:hidden;background-color:#fff8e4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220'%3E%3Cg fill='none' stroke='%23ffbd38' stroke-opacity='.78' stroke-width='4'%3E%3Cpath d='M15 20 43 4 71 20 71 52 43 68 15 52Z M88 8 116 -8 144 8 144 40 116 56 88 40Z M161 20 189 4 217 20 217 52 189 68 161 52Z M-22 92 6 76 34 92 34 124 6 140 -22 124Z M27 164 55 148 83 164 83 196 55 212 27 196Z'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220'%3E%3Cg fill='none' stroke='%23ffbd38' stroke-opacity='.78' stroke-width='4'%3E%3Cpath d='M15 20 43 4 71 20 71 52 43 68 15 52Z M88 8 116 -8 144 8 144 40 116 56 88 40Z M161 20 189 4 217 20 217 52 189 68 161 52Z M-22 92 6 76 34 92 34 124 6 140 -22 124Z M27 164 55 148 83 164 83 196 55 212 27 196Z'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(120deg,#fff9e8 0%,#fff3d0 50%,#ffe08a 100%);background-repeat:no-repeat,no-repeat,no-repeat;background-position:left top,right bottom,center;background-size:190px 100px,190px 100px,cover;color:var(--marrom);padding:30px 20px 28px;text-align:center;box-shadow:0 4px 14px rgba(181,133,37,.13);border-bottom:4px solid rgba(255,255,255,.85)}
+.header-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.header-icon{width:64px;height:64px;margin:0 auto 12px;border-radius:18px;background:rgba(255,255,255,.84);display:flex;align-items:center;justify-content:center;font-size:34px;border:1px solid rgba(255,189,56,.55);box-shadow:0 4px 12px rgba(220,161,37,.18)}
+header h1{margin:0;font-size:34px;color:var(--marrom);font-weight:800}
+header p{margin:9px auto 0;font-size:16px;color:#68452e;max-width:680px;line-height:1.5;opacity:1}
+main{max-width:1050px;margin:20px auto;padding:0 16px 40px}
+.card{background:rgba(255,255,255,.94);border:1px solid rgba(255,195,69,.62);border-radius:17px;padding:20px;margin-bottom:12px;box-shadow:0 5px 16px rgba(151,111,41,.09)}
+h2{margin-top:0;color:var(--marrom);font-size:20px}
+label{font-weight:700;display:block;margin:12px 0 6px;color:#343b49}
+input,select,textarea{width:100%;border:1px solid #d5deea;border-radius:9px;padding:11px 12px;font-size:14px;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--texto)}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(255,189,56,.28);border-color:#efb42b}
+textarea{min-height:105px;resize:vertical;line-height:1.45}
+#objetivo{min-height:140px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.notice{background:#fff6d9;border:1px solid #ffdc7e;border-left:5px solid #ffb51d;padding:12px 14px;border-radius:10px;font-size:14px;line-height:1.45;color:#73501f}
+.small{font-size:13px;color:var(--suave)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+button{border:0;border-radius:10px;padding:12px 17px;font-size:14px;font-weight:700;cursor:pointer;transition:filter .15s,transform .15s}
+.primary{background:#713814;color:#fff}
+.secondary{background:#f0e8dc;color:#63351d}
+.danger{background:#f9dfe0;color:#a92b2b}
+button:disabled{opacity:.6;cursor:not-allowed}
+button:hover{filter:brightness(.98);transform:translateY(-1px)}
+#resultado{min-height:260px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #d9e1ec;border-radius:10px;padding:16px;color:var(--texto)}
+.gerando{color:#a36b0b;font-style:italic}
+.tabs{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tab-button{background:#f0e8dc;color:#63351d;border:1px solid #eadfce;border-radius:11px;padding:12px 18px}
+.tab-button.active{background:#713814;color:#fff;border:2px solid #ffcc53;box-shadow:0 0 0 3px rgba(255,189,56,.17)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+#resultadoPlanejamento{min-height:320px;white-space:pre-wrap;line-height:1.65;font-size:15.5px;background:#fff;border:1px solid #d9e1ec;border-radius:10px;padding:16px;color:var(--texto)}
+#objetivoPlanejamento{min-height:130px}
+#especificidades{min-height:120px}
+#materiaisPlanejamento{min-height:100px}
+#interessesDificuldades{min-height:100px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}header h1{font-size:27px}.actions button{width:100%}main{padding-left:10px;padding-right:10px}.card{padding:15px}}
+@media print{body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12pt;color:#000}header,.no-print,.form-card{display:none!important}main{margin:0;max-width:none;padding:0}.card{box-shadow:none;border:none;padding:0;margin:0}#resultado,#resultadoPlanejamento{border:none;padding:0;font-size:12pt;line-height:1.5}@page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}}
+
+/* Tema visual Abelhinhas — somente apresentação; lógica original preservada */
+body{background:#fff8e4;background-image:radial-gradient(circle at 10% 12%,#fffdf3 0%,transparent 32%),radial-gradient(circle at 90% 82%,#ffefbf 0%,transparent 35%);min-height:100vh}
+body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:0;width:215px;height:220px;opacity:.9;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='210' viewBox='0 0 210 210'%3E%3Cg fill='none' stroke='%23ffb719' stroke-width='3'%3E%3Cpath d='M8 12 32 -2 56 12 56 40 32 54 8 40Z M66 12 90 -2 114 12 114 40 90 54 66 40Z M124 12 148 -2 172 12 172 40 148 54 124 40Z M-21 63 3 49 27 63 27 91 3 105 -21 91Z M37 63 61 49 85 63 85 91 61 105 37 91Z M8 114 32 100 56 114 56 142 32 156 8 142Z'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat}
+body::before{top:0;left:0}body::after{right:0;bottom:0;transform:rotate(180deg)}
+header,main{position:relative;z-index:1}
+header{background:transparent;box-shadow:none;border-bottom:0;padding:28px 20px 24px}
+.header-inner{max-width:1000px}
+.header-icon{width:75px;height:75px;background:#fff3c9;border:2px solid #ffcb55;border-radius:50%;font-size:40px;box-shadow:0 5px 16px #e8aa2b24}
+.header-icon::after{content:'🐝';position:absolute;transform:translate(48px,-28px);font-size:27px}
+header h1{font-size:clamp(29px,4vw,48px);color:#432a09;letter-spacing:-.7px}
+header p{color:#57432c;font-size:16px}
+main{max-width:1180px}
+.card{background:#fffdf8ed;border:1px solid #ffdc92;border-radius:19px;box-shadow:0 7px 20px #9b752012;padding:23px;margin-bottom:15px}
+.notice{background:#ffedbc;border:1px solid #ffe1a1;border-left:5px solid #efaa06;border-radius:14px;color:#64461e}
+label{color:#392b17}
+input:not([type=checkbox]):not([type=radio]),select,textarea{background:#fffefa;border:1px solid #edd6ac;border-radius:13px;padding:13px 15px;box-shadow:0 2px 7px #a9801b09}
+input:focus,select:focus,textarea:focus{outline:3px solid #ffcd6547;border-color:#eeb032}
+button{border-radius:13px;padding:13px 19px;box-shadow:0 2px 8px #b9892410}
+.primary{background:#ffce55;color:#2d220e}
+.primary:hover{background:#ffc33c}
+.secondary{background:#fff4df;color:#382a16;border:1px solid #f5dfb6}
+.danger{background:#ffe8df;color:#a63c20;border:1px solid #ffd2c0}
+.tab-button{flex:1;min-width:200px;background:#fff2d4;color:#4e3219;border:1px solid #ffdf9e;font-size:15px}
+.tab-button.active{background:#ffcf5b;color:#2e220e;border:1px solid #f5b932;box-shadow:0 4px 12px #e8a51c20}
+.tabs{gap:12px;margin:18px 0}
+h2{color:#482e12}
+#resultado,#resultadoPlanejamento{background:#fff;border:1px dashed #f5c76b;border-radius:17px;padding:22px;min-height:260px}
+.small{color:#776c58}
+@media(max-width:760px){header{padding:26px 12px 15px}.card{padding:16px}.tab-button{min-width:100%}body::before,body::after{opacity:.45;width:100px}}
+@media print{body::before,body::after{display:none!important}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="header-icon">💡</div>
+    <h1>Velotec Estratégias</h1>
+    <p>Assistente inteligente para criação de estratégias pedagógicas curtas, objetivas e adaptadas ao objetivo informado.</p>
+  </div>
+</header>
+
+<main>
+  <section class="card form-card">
+    <div class="notice">O sistema não salva os dados. A chave é usada apenas para solicitar a geração pela Groq.</div>
+
+    <label for="apiKey">Chave da API Groq</label>
+    <input id="apiKey" type="password" placeholder="Cole aqui sua chave do Groq (começa com gsk_)">
+    <p class="small">A mesma chave é usada nas duas abas e permanece preenchida enquanto a página estiver aberta.</p>
+  </section>
+
+  <div class="tabs no-print">
+    <button class="tab-button active" id="btnEstrategias" onclick="abrirAba('estrategias')">💡 Estratégias</button>
+    <button class="tab-button" id="btnPlanejamento" onclick="abrirAba('planejamento')">📘 Planejamento detalhado</button>
+  </div>
+
+  <div id="abaEstrategias" class="tab-content active">
+    <section class="card form-card">
+      <div class="grid">
+        <div>
+          <label for="instrumento">Referencial pedagógico</label>
+          <select id="instrumento" onchange="trocarInstrumento()">
+            <option value="Portage" selected>Portage</option>
+            <option value="IDADI">IDADI</option>
+            <option value="Vineland">Vineland</option>
+            <option value="PEI">PEI</option>
+            <option value="BNCC">BNCC</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+        <div>
+          <label for="idade">Faixa etária do educando</label>
+          <input id="idade" type="number" min="0" max="60" placeholder="Ex.: 4">
+        </div>
+        <div>
+          <label for="nivelApoio">Nível de necessidade de apoio</label>
+          <select id="nivelApoio">
+            <option value="">Não informado</option>
+            <option value="Baixa necessidade de apoio">Baixa necessidade de apoio</option>
+            <option value="Necessidade moderada de apoio">Necessidade moderada de apoio</option>
+            <option value="Alta necessidade de apoio">Alta necessidade de apoio</option>
+          </select>
+          <p class="small">Escolha conforme o grau de autonomia, mediação e adaptações necessárias.</p>
+        </div>
+      </div>
+
+      <label for="objetivo">Objetivo</label>
+      <textarea id="objetivo" placeholder="Ex.: Obedecer a 3 ordens diferentes que não são acompanhadas de gestos indicativos."></textarea>
+
+      <div class="grid">
+        <div id="areaPortageBox">
+          <label for="area">Área do Portage</label>
+          <select id="area">
+            <option value="automatica">Detectar automaticamente</option>
+            <option value="Socialização">Socialização</option>
+            <option value="Linguagem">Linguagem</option>
+            <option value="Cognição">Cognição</option>
+            <option value="Autocuidados">Autocuidados</option>
+            <option value="Desenvolvimento motor">Desenvolvimento motor</option>
+          </select>
+        </div>
+        <div>
+          <label for="quantidade">Quantidade de estratégias</label>
+          <select id="quantidade">
+            <option value="4" selected>4 estratégias</option>
+            <option value="6">6 estratégias</option>
+            <option value="8">8 estratégias</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label for="referencia">Como escrever</label>
+          <select id="referencia">
+            <option value="nao_mencionar">Não mencionar</option>
+            <option value="a educanda">a educanda</option>
+            <option value="o educando">o educando</option>
+            <option value="a criança">a criança</option>
+            <option value="o aluno">o aluno</option>
+            <option value="a aluna">a aluna</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="perfil">Perfil da educanda ou do educando (opcional)</label>
+      <textarea id="perfil" placeholder="Ex.: TEA nível 2, apresenta agitação, gosta de água e atividades sensoriais."></textarea>
+
+      <label for="materiais">Materiais disponíveis (opcional)</label>
+      <textarea id="materiais" placeholder="Ex.: massinha, EVA, bambolê, bolas, jogos de encaixe e objetos da rotina."></textarea>
+
+       <div style="margin-top:16px;">
+         <label style="display:flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;">
+           <input id="ativarNaoQuero" type="checkbox" onchange="toggleNaoQuero()" style="width:auto;">
+           O que eu não quero na estratégia
+         </label>
+         <p class="small">Opcional. Marque quando quiser indicar recursos, atividades ou abordagens que não devem aparecer.</p>
+         <textarea id="naoQuero" style="display:none;min-height:100px;" placeholder="Ex.: Não quero cartões nem histórias. Quero uma atividade prática com materiais concretos."></textarea>
+       </div>
+    </section>
+
+    <section class="card no-print">
+      <div class="actions">
+        <button class="primary" id="botaoGerarEstrategias" onclick="gerarEstrategias()">Gerar estratégias</button>
+        <button class="secondary" onclick="copiarResultado()">Copiar texto</button>
+        <button class="secondary" onclick="baixarWord()">Baixar em Word</button>
+        <button class="danger" onclick="limparTudo()">Novo objetivo / limpar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="no-print">Estratégias geradas</h2>
+      <div id="resultado">As estratégias aparecerão aqui.</div>
+    </section>
+  </div>
+
+  <div id="abaPlanejamento" class="tab-content">
+    <section class="card form-card">
+      <div class="grid">
+        <div>
+          <label for="instrumentoPlanejamento">Referencial pedagógico</label>
+          <select id="instrumentoPlanejamento" onchange="trocarInstrumentoPlanejamento()">
+            <option value="Portage" selected>Portage</option>
+            <option value="IDADI">IDADI</option>
+            <option value="Vineland">Vineland</option>
+            <option value="PEI">PEI</option>
+            <option value="BNCC">BNCC</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+        <div>
+          <label for="idadePlanejamento">Faixa etária do educando</label>
+          <input id="idadePlanejamento" type="number" min="0" max="60" placeholder="Ex.: 4">
+        </div>
+        <div>
+          <label for="nivelApoioPlanejamento">Nível de necessidade de apoio</label>
+          <select id="nivelApoioPlanejamento">
+            <option value="">Não informado</option>
+            <option value="Baixa necessidade de apoio">Baixa necessidade de apoio — maior autonomia e menor necessidade de mediação.</option>
+            <option value="Necessidade moderada de apoio">Necessidade moderada de apoio — instruções objetivas, apoio visual e mediação frequente.</option>
+            <option value="Alta necessidade de apoio">Alta necessidade de apoio — estratégias estruturadas, previsibilidade e adaptações individualizadas.</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="areaPortagePlanejamentoBox">
+        <label for="areaPlanejamento">Área do Portage</label>
+        <select id="areaPlanejamento">
+          <option value="automatica">Detectar automaticamente</option>
+          <option value="Socialização">Socialização</option>
+          <option value="Linguagem">Linguagem</option>
+          <option value="Cognição">Cognição</option>
+          <option value="Autocuidados">Autocuidados</option>
+          <option value="Desenvolvimento motor">Desenvolvimento motor</option>
+        </select>
+      </div>
+
+      <label for="objetivoPlanejamento">Objetivo do planejamento</label>
+      <textarea id="objetivoPlanejamento" placeholder="Descreva a habilidade ou objetivo que será trabalhado."></textarea>
+
+      <label for="especificidades">Especificidades do educando</label>
+      <textarea id="especificidades" placeholder="Ex.: diagnóstico, nível de apoio, forma de comunicação, comportamento, dificuldades, necessidades de adaptação e autonomia."></textarea>
+
+      <label for="interessesDificuldades">Interesses e dificuldades</label>
+      <textarea id="interessesDificuldades" placeholder="Ex.: gosta de água, músicas e encaixes; apresenta dificuldade em esperar e manter a atenção."></textarea>
+
+      <label for="materiaisPlanejamento">Materiais que serão utilizados</label>
+      <textarea id="materiaisPlanejamento" placeholder="Ex.: figuras, objetos da rotina, massinha, bambolê, EVA, recursos visuais e jogos."></textarea>
+
+      <div class="grid">
+        <div>
+          <label for="duracao">Duração do atendimento</label>
+          <input id="duracao" type="text" placeholder="Ex.: 40 minutos">
+        </div>
+        <div>
+          <label for="tipoAtendimento">Tipo de atendimento</label>
+          <select id="tipoAtendimento">
+            <option value="Individual" selected>Individual</option>
+            <option value="Em dupla">Em dupla</option>
+            <option value="Em grupo">Em grupo</option>
+            <option value="Na sala de aula">Na sala de aula</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="observacoesPlanejamento">Outras orientações (opcional)</label>
+      <textarea id="observacoesPlanejamento" placeholder="Ex.: incluir rotina visual, pausas sensoriais, reforço positivo ou participação da família."></textarea>
+    </section>
+
+    <section class="card no-print">
+      <div class="actions">
+        <button class="primary" id="botaoGerarPlanejamento" onclick="gerarPlanejamento()">Gerar planejamento</button>
+        <button class="secondary" onclick="copiarPlanejamento()">Copiar texto</button>
+        <button class="secondary" onclick="baixarWordPlanejamento()">Baixar em Word</button>
+        <button class="danger" onclick="limparPlanejamento()">Novo planejamento / limpar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="no-print">Planejamento gerado</h2>
+      <div id="resultadoPlanejamento">O planejamento aparecerá aqui.</div>
+    </section>
+  </div>
+</main>
+
+<script>
+function limparTexto(txt){
+  return (txt || '').trim().replace(/\s+/g,' ');
+}
+
+function abrirAba(aba){
+  const estrategias = aba === 'estrategias';
+  document.getElementById('abaEstrategias').classList.toggle('active', estrategias);
+  document.getElementById('abaPlanejamento').classList.toggle('active', !estrategias);
+  document.getElementById('btnEstrategias').classList.toggle('active', estrategias);
+  document.getElementById('btnPlanejamento').classList.toggle('active', !estrategias);
+}
+
+function toggleNaoQuero(){
+  const checkbox = document.getElementById('ativarNaoQuero');
+  const campo = document.getElementById('naoQuero');
+  campo.style.display = checkbox.checked ? 'block' : 'none';
+}
+
+function trocarInstrumento(){
+  const instrumento = document.getElementById('instrumento').value;
+  document.getElementById('areaPortageBox').style.display =
+    instrumento === 'Portage' ? 'block' : 'none';
+}
+
+function trocarInstrumentoPlanejamento(){
+  const instrumento = document.getElementById('instrumentoPlanejamento').value;
+  document.getElementById('areaPortagePlanejamentoBox').style.display =
+    instrumento === 'Portage' ? 'block' : 'none';
+}
+
+async function chamarGroq(chave, prompt, maxTokens){
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${chave}`
+    },
+    body:JSON.stringify({
+      model:'openai/gpt-oss-120b',
+      messages:[{role:'user',content:prompt}],
+      temperature:0.45,
+      max_tokens:maxTokens
+    })
+  });
+
+  if(!response.ok){
+    const err = await response.json();
+    throw new Error(err?.error?.message || response.status);
+  }
+
+  const dados = await response.json();
+  return dados.choices?.[0]?.message?.content || '';
+}
+
+async function gerarEstrategias(){
+  const chave = limparTexto(document.getElementById('apiKey').value);
+  const objetivo = limparTexto(document.getElementById('objetivo').value);
+  const instrumento = document.getElementById('instrumento').value;
+  const area = document.getElementById('area').value;
+  const quantidade = document.getElementById('quantidade').value;
+  const referencia = document.getElementById('referencia').value;
+  const idade = limparTexto(document.getElementById('idade').value);
+  const perfil = limparTexto(document.getElementById('perfil').value);
+  const nivelApoio = document.getElementById('nivelApoio').value;
+  const materiais = limparTexto(document.getElementById('materiais').value);
+  const naoQuero = document.getElementById('ativarNaoQuero').checked
+    ? limparTexto(document.getElementById('naoQuero').value)
+    : '';
+
+  if(!chave){
+    alert('Cole sua chave da API Groq.');
+    return;
+  }
+
+  if(!objetivo){
+    document.getElementById('resultado').innerText = 'Digite um objetivo para gerar as estratégias.';
+    return;
+  }
+
+  const el = document.getElementById('resultado');
+  const botao = document.getElementById('botaoGerarEstrategias');
+  botao.disabled = true;
+  el.innerHTML = '<span class="gerando">Gerando estratégias, aguarde...</span>';
+
+  const textoReferencia = referencia === 'nao_mencionar'
+    ? 'Não mencionar educando, educanda, aluno, aluna ou criança nas estratégias.'
+    : `Utilizar "${referencia}" quando for necessário mencionar o estudante.`;
+
+  const dadosOpcionais = [
+    `Referencial pedagógico: ${instrumento}.`,
+    instrumento === 'Portage'
+      ? (area !== 'automatica' ? `Área do Portage: ${area}.` : 'Identifique automaticamente a área do Portage.')
+      : '',
+    idade ? `Faixa etária: ${idade} anos.` : '',
+    nivelApoio ? `Nível de necessidade de apoio: ${nivelApoio}.` : '',
+    perfil ? `Perfil: ${perfil}.` : '',
+    materiais ? `Materiais disponíveis: ${materiais}.` : '',
+    naoQuero ? `RESTRIÇÕES DA PROFESSORA — NÃO UTILIZAR NA ESTRATÉGIA: ${naoQuero}.` : ''
+  ].filter(Boolean).join('\n');
+
+  const prompt = `Você é uma pedagoga especialista em educação especial, estimulação precoce e elaboração de estratégias pedagógicas.
+
+Crie exatamente ${quantidade} estratégias pedagógicas para o objetivo informado.
+
+PADRÃO OBRIGATÓRIO:
+- Cada estratégia deve ter no máximo 2 linhas.
+- Não iniciar as estratégias com verbos no infinitivo.
+- Escrever de forma curta, objetiva, prática e pedagógica.
+- Manter o estilo de frases como: "Jogos lúdicos com instruções orais, favorecendo a compreensão de comandos variados."
+- Cada estratégia deve apresentar uma proposta diferente.
+${textoReferencia}
+- Não numerar, não usar títulos e não explicar o objetivo.
+- Não repetir o objetivo como estratégia.
+- Não criar habilidades diferentes da solicitada.
+- Considerar o instrumento de referência, a faixa etária, o nível de necessidade de apoio, o perfil e os materiais apenas quando forem informados.
+- Se houver "RESTRIÇÕES DA PROFESSORA — NÃO UTILIZAR NA ESTRATÉGIA", obedecer rigorosamente essa orientação e não utilizar os recursos, atividades ou abordagens indicados.
+- Ajustar a complexidade das atividades, a mediação e as adaptações conforme o nível de necessidade de apoio.
+- Adaptar as propostas à faixa etária, evitando atividades infantis para adolescentes ou adultos.
+- Usar linguagem adequada ao trabalho pedagógico e à educação especial.
+- Entregar somente as estratégias, uma por linha, sem comentários antes ou depois.
+
+${dadosOpcionais}
+
+OBJETIVO:
+${objetivo}`;
+
+  try{
+    const texto = await chamarGroq(chave, prompt, 1200);
+    el.innerText = texto ? texto.trim() : 'A API não retornou estratégias. Tente novamente.';
+  }catch(e){
+    el.innerText = `Erro da API: ${e.message}`;
+  }finally{
+    botao.disabled = false;
+  }
+}
+
+async function gerarPlanejamento(){
+  const chave = limparTexto(document.getElementById('apiKey').value);
+  const instrumento = document.getElementById('instrumentoPlanejamento').value;
+  const area = document.getElementById('areaPlanejamento').value;
+  const idade = limparTexto(document.getElementById('idadePlanejamento').value);
+  const objetivo = limparTexto(document.getElementById('objetivoPlanejamento').value);
+  const especificidades = limparTexto(document.getElementById('especificidades').value);
+  const nivelApoio = document.getElementById('nivelApoioPlanejamento').value;
+  const interesses = limparTexto(document.getElementById('interessesDificuldades').value);
+  const materiais = limparTexto(document.getElementById('materiaisPlanejamento').value);
+  const duracao = limparTexto(document.getElementById('duracao').value);
+  const tipo = document.getElementById('tipoAtendimento').value;
+  const observacoes = limparTexto(document.getElementById('observacoesPlanejamento').value);
+
+  if(!chave){
+    alert('Cole sua chave da API Groq.');
+    return;
+  }
+
+  if(!objetivo){
+    document.getElementById('resultadoPlanejamento').innerText =
+      'Digite o objetivo do planejamento.';
+    return;
+  }
+
+  const el = document.getElementById('resultadoPlanejamento');
+  const botao = document.getElementById('botaoGerarPlanejamento');
+  botao.disabled = true;
+  el.innerHTML = '<span class="gerando">Gerando planejamento, aguarde...</span>';
+
+  const contexto = [
+    `Referencial pedagógico: ${instrumento}.`,
+    instrumento === 'Portage'
+      ? (area !== 'automatica' ? `Área do Portage: ${area}.` : 'Identifique automaticamente a área do Portage.')
+      : '',
+    idade ? `Faixa etária: ${idade} anos.` : '',
+    `Tipo de atendimento: ${tipo}.`,
+    duracao ? `Duração: ${duracao}.` : '',
+    nivelApoio ? `Nível de necessidade de apoio: ${nivelApoio}.` : '',
+    especificidades ? `Especificidades do educando: ${especificidades}.` : '',
+    interesses ? `Interesses e dificuldades: ${interesses}.` : '',
+    materiais ? `Materiais disponíveis: ${materiais}.` : '',
+    observacoes ? `Outras orientações: ${observacoes}.` : ''
+  ].filter(Boolean).join('\n');
+
+  const prompt = `Você é uma pedagoga especialista em educação especial e planejamento pedagógico individualizado.
+
+Elabore um planejamento detalhado para o objetivo informado, respeitando a faixa etária, o nível de necessidade de apoio, as especificidades do educando, o instrumento de referência, os materiais e o tipo de atendimento.
+
+REGRAS OBRIGATÓRIAS:
+- Escrever de forma profissional, clara, prática e acessível.
+- Adaptar totalmente as propostas à faixa etária, evitando infantilização de adolescentes e adultos.
+- Considerar necessidades de apoio, comunicação, comportamento, interesses, dificuldades e autonomia quando informados.
+- Não inventar diagnóstico, características ou materiais que não foram fornecidos.
+- Manter o foco no objetivo informado.
+- Propor atividades possíveis de serem realizadas no contexto pedagógico.
+FORMATAÇÃO OBRIGATÓRIA
+
+- Não utilizar Markdown.
+- Não utilizar ##, #, **, *, > ou qualquer outro símbolo de formatação.
+- Não utilizar listas com marcadores (-).
+- Utilizar somente texto simples.
+- O planejamento deve ficar pronto para copiar e colar diretamente no Word.
+
+Organizar obrigatoriamente nesta ordem:
+
+OBJETIVO
+
+MATERIAIS
+
+ORGANIZAÇÃO DO ATENDIMENTO
+
+DESENVOLVIMENTO DAS ATIVIDADES
+
+ADAPTAÇÕES E APOIOS
+
+AVALIAÇÃO
+
+Regras adicionais:
+- Deixar uma linha em branco entre cada seção.
+- Em DESENVOLVIMENTO DAS ATIVIDADES utilizar apenas a numeração:
+1.
+2.
+3.
+4.
+- Escrever parágrafos completos e organizados.
+- Em MATERIAIS, escrever um material por linha, sem utilizar marcadores.
+- Em ADAPTAÇÕES E APOIOS, descrever em texto corrido.
+- Em AVALIAÇÃO, descrever em texto corrido.
+- Não utilizar qualquer tipo de formatação Markdown.
+- Em DESENVOLVIMENTO DAS ATIVIDADES, apresentar uma sequência detalhada com início, desenvolvimento e encerramento.
+- Considerar as especificidades informadas ao elaborar adaptações e apoios.
+- Não usar linguagem excessivamente técnica.
+- Entregar somente o planejamento, sem comentários antes ou depois.
+
+${contexto}
+
+OBJETIVO:
+${objetivo}`;
+
+  try{
+    const texto = await chamarGroq(chave, prompt, 2500);
+    el.innerText = texto ? texto.trim() : 'A API não retornou o planejamento. Tente novamente.';
+  }catch(e){
+    el.innerText = `Erro da API: ${e.message}`;
+  }finally{
+    botao.disabled = false;
+  }
+}
+
+function copiarResultado(){
+  const texto = document.getElementById('resultado').innerText;
+  navigator.clipboard.writeText(texto);
+  alert('Estratégias copiadas!');
+}
+
+function copiarPlanejamento(){
+  const texto = document.getElementById('resultadoPlanejamento').innerText;
+  navigator.clipboard.writeText(texto);
+  alert('Planejamento copiado!');
+}
+
+function criarWord(texto, nome){
+  const conteudo = texto
+    .split('\n')
+    .map(linha => linha.trim() ? `<p>${linha}</p>` : '<p>&nbsp;</p>')
+    .join('');
+
+  const html = `<html><head><meta charset="UTF-8"><style>
+  @page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}
+  body{font-family:Arial,sans-serif;font-size:12pt;line-height:1.5}
+  p{margin:0 0 12pt 0}
+  </style></head><body>${conteudo}</body></html>`;
+
+  baixarArquivo(new Blob(['\ufeff',html],{type:'application/msword'}),nome);
+}
+
+function baixarWord(){
+  criarWord(document.getElementById('resultado').innerText,'estrategias.doc');
+}
+
+function baixarWordPlanejamento(){
+  criarWord(document.getElementById('resultadoPlanejamento').innerText,'planejamento.doc');
+}
+
+function baixarArquivo(blob,nome){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = nome;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function limparTudo(){
+  if(!confirm('Deseja limpar o objetivo atual?')) return;
+  ['idade','objetivo','perfil','materiais','naoQuero'].forEach(id => {
+    document.getElementById(id).value='';
+  });
+  document.getElementById('ativarNaoQuero').checked=false;
+  toggleNaoQuero();
+  document.getElementById('instrumento').value='Portage';
+  document.getElementById('area').value='automatica';
+  document.getElementById('quantidade').value='4';
+  document.getElementById('referencia').value='nao_mencionar';
+  document.getElementById('nivelApoio').value='';
+  trocarInstrumento();
+  document.getElementById('resultado').innerText='As estratégias aparecerão aqui.';
+}
+
+function limparPlanejamento(){
+  if(!confirm('Deseja limpar o planejamento atual?')) return;
+  [
+    'idadePlanejamento','objetivoPlanejamento','especificidades',
+    'interessesDificuldades','materiaisPlanejamento','duracao',
+    'observacoesPlanejamento'
+  ].forEach(id => {
+    document.getElementById(id).value='';
+  });
+  document.getElementById('instrumentoPlanejamento').value='Portage';
+  document.getElementById('areaPlanejamento').value='automatica';
+  document.getElementById('tipoAtendimento').value='Individual';
+  trocarInstrumentoPlanejamento();
+  document.getElementById('resultadoPlanejamento').innerText='O planejamento aparecerá aqui.';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  trocarInstrumento();
+  trocarInstrumentoPlanejamento();
+});
+</script>
+</body>
+</html>
