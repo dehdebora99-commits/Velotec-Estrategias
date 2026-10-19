@@ -45,6 +45,38 @@ button:hover{filter:brightness(.98);transform:translateY(-1px)}
 #interessesDificuldades{min-height:100px}
 @media(max-width:760px){.grid{grid-template-columns:1fr}header h1{font-size:27px}.actions button{width:100%}main{padding-left:10px;padding-right:10px}.card{padding:15px}}
 @media print{body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12pt;color:#000}header,.no-print,.form-card{display:none!important}main{margin:0;max-width:none;padding:0}.card{box-shadow:none;border:none;padding:0;margin:0}#resultado,#resultadoPlanejamento{border:none;padding:0;font-size:12pt;line-height:1.5}@page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}}
+
+/* Tema visual Abelhinhas — somente apresentação; lógica original preservada */
+body{background:#fff8e4;background-image:radial-gradient(circle at 10% 12%,#fffdf3 0%,transparent 32%),radial-gradient(circle at 90% 82%,#ffefbf 0%,transparent 35%);min-height:100vh}
+body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:0;width:215px;height:220px;opacity:.9;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='210' viewBox='0 0 210 210'%3E%3Cg fill='none' stroke='%23ffb719' stroke-width='3'%3E%3Cpath d='M8 12 32 -2 56 12 56 40 32 54 8 40Z M66 12 90 -2 114 12 114 40 90 54 66 40Z M124 12 148 -2 172 12 172 40 148 54 124 40Z M-21 63 3 49 27 63 27 91 3 105 -21 91Z M37 63 61 49 85 63 85 91 61 105 37 91Z M8 114 32 100 56 114 56 142 32 156 8 142Z'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat}
+body::before{top:0;left:0}body::after{right:0;bottom:0;transform:rotate(180deg)}
+header,main{position:relative;z-index:1}
+header{background:transparent;box-shadow:none;border-bottom:0;padding:28px 20px 24px}
+.header-inner{max-width:1000px}
+.header-icon{width:75px;height:75px;background:#fff3c9;border:2px solid #ffcb55;border-radius:50%;font-size:40px;box-shadow:0 5px 16px #e8aa2b24}
+.header-icon::after{content:'🐝';position:absolute;transform:translate(48px,-28px);font-size:27px}
+header h1{font-size:clamp(29px,4vw,48px);color:#432a09;letter-spacing:-.7px}
+header p{color:#57432c;font-size:16px}
+main{max-width:1180px}
+.card{background:#fffdf8ed;border:1px solid #ffdc92;border-radius:19px;box-shadow:0 7px 20px #9b752012;padding:23px;margin-bottom:15px}
+.notice{background:#ffedbc;border:1px solid #ffe1a1;border-left:5px solid #efaa06;border-radius:14px;color:#64461e}
+label{color:#392b17}
+input:not([type=checkbox]):not([type=radio]),select,textarea{background:#fffefa;border:1px solid #edd6ac;border-radius:13px;padding:13px 15px;box-shadow:0 2px 7px #a9801b09}
+input:focus,select:focus,textarea:focus{outline:3px solid #ffcd6547;border-color:#eeb032}
+button{border-radius:13px;padding:13px 19px;box-shadow:0 2px 8px #b9892410}
+.primary{background:#ffce55;color:#2d220e}
+.primary:hover{background:#ffc33c}
+.secondary{background:#fff4df;color:#382a16;border:1px solid #f5dfb6}
+.danger{background:#ffe8df;color:#a63c20;border:1px solid #ffd2c0}
+.tab-button{flex:1;min-width:200px;background:#fff2d4;color:#4e3219;border:1px solid #ffdf9e;font-size:15px}
+.tab-button.active{background:#ffcf5b;color:#2e220e;border:1px solid #f5b932;box-shadow:0 4px 12px #e8a51c20}
+.tabs{gap:12px;margin:18px 0}
+h2{color:#482e12}
+#resultado,#resultadoPlanejamento{background:#fff;border:1px dashed #f5c76b;border-radius:17px;padding:22px;min-height:260px}
+.small{color:#776c58}
+@media(max-width:760px){header{padding:26px 12px 15px}.card{padding:16px}.tab-button{min-width:100%}body::before,body::after{opacity:.45;width:100px}}
+@media print{body::before,body::after{display:none!important}}
+
 </style>
 </head>
 <body>
