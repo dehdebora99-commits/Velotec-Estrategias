@@ -77,13 +77,113 @@ h2{color:#482e12}
 @media(max-width:760px){header{padding:26px 12px 15px}.card{padding:16px}.tab-button{min-width:100%}body::before,body::after{opacity:.45;width:100px}}
 @media print{body::before,body::after{display:none!important}}
 
+
+/* ============================================================
+   VELOTEC ESTRATEGIAS — SAFIRA & OURO
+   Somente apresentação: campos, IDs e JavaScript originais intactos.
+   ============================================================ */
+:root{--texto:#102a56;--suave:#536685;--dourado:#e4ac23;--marrom:#102b58}
+html{color-scheme:light}
+body{min-height:100vh;background:radial-gradient(ellipse at 90% 30%,#1754a1 0%,transparent 48%),radial-gradient(ellipse at 0% 65%,#174b8a 0%,transparent 50%),linear-gradient(135deg,#03152e 0%,#082c61 45%,#031934 100%);color:#102b58;font-family:'Segoe UI',Arial,Helvetica,sans-serif}
+body::before,body::after{display:none!important}
+header{padding:42px 18px 29px;background:radial-gradient(ellipse at 50% 45%,#174786aa 0%,transparent 64%),linear-gradient(130deg,#061b3d,#0a3470 65%,#061c40);border-bottom:2px solid #e8b63d;box-shadow:0 10px 30px #020e2860}
+.header-inner{max-width:1100px}
+.header-icon{position:relative;width:100px;height:90px;border:0;border-radius:0;background:transparent;box-shadow:none;margin:0 auto 4px;font-size:0;color:transparent}
+.header-icon::before{content:'V';display:block;font-family:Georgia,'Times New Roman',serif;font-size:89px;font-weight:bold;line-height:1;background:linear-gradient(145deg,#fff3b6,#d99a1b 47%,#ffdf76 70%,#97601b);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 3px #0007)}
+.header-icon::after{content:none!important}
+header h1{font-family:Georgia,'Times New Roman',serif;text-transform:uppercase;letter-spacing:3px;font-size:clamp(28px,5vw,52px);font-weight:700;color:#f4f7ff;text-shadow:0 2px 8px #0008;margin:3px 0}
+header h1::after{content:'ESTRATÉGIAS';display:block;margin:13px auto 0;max-width:420px;padding:7px 22px;border:1px solid #ffe49a;border-radius:100px;background:linear-gradient(110deg,#a86a0a,#ffe07a 40%,#e5a713 80%,#a86a0a);box-shadow:0 0 18px #e4a42c88;color:#071a39;font-family:'Segoe UI',Arial,sans-serif;font-size:clamp(14px,2.4vw,21px);font-weight:800;letter-spacing:5px;text-shadow:none}
+header p{color:#f2f5fc;max-width:710px;font-size:16px;margin-top:18px}
+main{max-width:1100px;margin:24px auto;padding:0 16px 55px}
+.card{background:linear-gradient(165deg,#ffffff,#f5f7fc);border:2px solid #e8b339;border-radius:23px;box-shadow:0 10px 30px #00112f66;padding:25px;margin-bottom:19px;color:#112b59}
+.card h2,h2{color:#112d5f;font-size:22px}
+.notice{background:linear-gradient(110deg,#fff8e9,#ffedc4);border:1px solid #e3b34c;border-left:5px solid #d99b16;color:#604a1e;border-radius:13px}
+label{color:#102b58;font-weight:750}
+.small{color:#526786}
+input:not([type=checkbox]):not([type=radio]),select,textarea{background:#fff;color:#122c59;border:1px solid #aebbd0;border-radius:12px;box-shadow:0 1px 3px #142b4510;padding:12px 14px}
+input::placeholder,textarea::placeholder{color:#64748b;opacity:1}
+input:focus,select:focus,textarea:focus{outline:3px solid #e5b44b55;border-color:#c8901e}
+input[type=checkbox]{accent-color:#c38a13}
+.tabs{display:flex;gap:15px;margin:18px 0 22px}
+.tab-button{flex:1;min-width:0;background:linear-gradient(120deg,#071c3e,#123f7b);color:#f5f7ff;border:2px solid #e3b13e;border-radius:15px;box-shadow:0 5px 13px #00112666;font-size:16px;padding:15px 16px}
+.tab-button.active{background:linear-gradient(115deg,#c1840d,#ffe17b 42%,#e3a21b);color:#071b39;border:2px solid #ffdf7b;box-shadow:0 0 18px #f2b52e66}
+button{border-radius:12px;padding:13px 19px;box-shadow:none;transition:filter .15s,transform .15s}
+.primary{background:linear-gradient(115deg,#c78c0d,#ffdc66 48%,#dfa31b);color:#071d40;border:1px solid #bf8413;box-shadow:0 4px 12px #c7922c55}
+.secondary{background:linear-gradient(110deg,#09214a,#0c3a76);color:white;border:1px solid #244d85}
+.danger{background:#f7f8fb;color:#122d5c;border:1px solid #6c7c98}
+.actions{justify-content:center;gap:12px}
+.actions button{min-width:160px}
+#resultado,#resultadoPlanejamento{background:#f8faff;border:1px solid #aebdd6;border-radius:14px;padding:23px;min-height:260px;color:#18345f}
+.gerando{color:#91620d}
+/* Mantém as seções originais em sequência vertical, sem colunas lado a lado. */
+#abaEstrategias,#abaPlanejamento{width:100%}
+#abaEstrategias.active,#abaPlanejamento.active{display:block}
+@media(max-width:760px){header{padding:30px 12px 22px}header h1{letter-spacing:1px}.card{padding:17px}.tabs{gap:10px}.tab-button{min-width:0;flex:1;padding:12px 8px;font-size:13px}.actions button{width:100%;min-width:0}main{padding:0 10px 36px}}
+@media(max-width:420px){.tabs{flex-direction:column}header h1::after{letter-spacing:3px}}
+@media print{html{color-scheme:light}body{background:white!important;color:black!important}header,.tabs,.form-card,.no-print{display:none!important}main{margin:0;max-width:none;padding:0}.card{background:white!important;color:black!important;border:0!important;box-shadow:none!important;padding:0;margin:0}#resultado,#resultadoPlanejamento{background:white!important;color:black!important;border:0!important;padding:0;font-size:12pt;line-height:1.5}@page{size:A4;margin-top:3cm;margin-left:3cm;margin-right:2cm;margin-bottom:2cm}}
+
+
+/* Ajuste exclusivo do cabeçalho: V itálico assimétrico vetorial */
+header .header-logo{width:min(255px,65vw);margin:0 auto 9px;display:flex;align-items:center;justify-content:center}
+header .header-logo svg{display:block;width:100%;height:auto;overflow:visible}
+header h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(30px,5vw,49px);letter-spacing:5px;color:#ffffff;margin:0;text-transform:uppercase}
+header h1::after{content:none!important;display:none!important}
+header p{margin-top:12px}
+@media(max-width:480px){header .header-logo{width:min(210px,62vw)}header h1{letter-spacing:3px}}
 </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <div class="header-icon">💡</div>
-    <h1>Velotec Estratégias</h1>
+    <div class="header-logo" aria-label="Logomarca Velotec: V dourado com livro e ramos ornamentais">
+      <svg viewBox="0 0 340 205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V metálico dourado com livro aberto e ramos dourados">
+        <defs>
+          <linearGradient id="goldVelotec" x1="0" y1="0" x2="1" y2=".9">
+            <stop offset="0" stop-color="#fff5c0"/>
+            <stop offset=".20" stop-color="#e4a72c"/>
+            <stop offset=".43" stop-color="#fff0a1"/>
+            <stop offset=".65" stop-color="#b97713"/>
+            <stop offset=".82" stop-color="#f9d46c"/>
+            <stop offset="1" stop-color="#9e6211"/>
+          </linearGradient>
+          <linearGradient id="goldEdge" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff9d8"/>
+            <stop offset=".5" stop-color="#e4a62a"/>
+            <stop offset="1" stop-color="#b67718"/>
+          </linearGradient>
+          <filter id="logoSoftShadow" x="-35%" y="-35%" width="170%" height="180%">
+            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#001329" flood-opacity=".55"/>
+          </filter>
+        </defs>
+        <g filter="url(#logoSoftShadow)">
+          <!-- Elegant metallic V, shaped rather than pasted -->
+          <path d="M89 24 H142 L171 111 L203 24 H251 L190 178 H153 Z"
+                fill="url(#goldVelotec)" stroke="url(#goldEdge)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M99 31 H134 L170 138 L211 31 H238"
+                fill="none" stroke="#fff4bf" stroke-width="2" opacity=".65"/>
+          <path d="M158 165 L188 165" stroke="#8d590f" stroke-width="1.6" opacity=".5"/>
+          <!-- Open book and lightbulb as a single line-art emblem -->
+          <g transform="translate(202 50)" stroke="url(#goldEdge)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 40 Q15 32 31 42 L31 73 Q15 63 0 70 Z"/>
+            <path d="M31 42 Q47 32 62 40 L62 70 Q47 63 31 73 Z"/>
+            <path d="M-5 48 L-5 76 Q14 68 31 80 Q48 68 67 76 L67 48"/>
+            <path d="M20 23 C18 12 26 6 32 6 C42 6 47 16 41 25 L37 31 H27 Z"/>
+            <path d="M27 35 H37 M29 39 H35"/>
+            <path d="M32 -1 V-6 M17 4 L13 0 M47 4 L51 0"/>
+          </g>
+          <!-- Symmetrical gold sprigs with individual leaves -->
+          <g fill="url(#goldVelotec)" stroke="#e8b34c" stroke-width=".65">
+            <path d="M74 145 Q41 112 48 52" fill="none" stroke="url(#goldEdge)" stroke-width="2.3"/>
+            <path d="M266 145 Q299 112 292 52" fill="none" stroke="url(#goldEdge)" stroke-width="2.3"/>
+            <path d="M52 68 Q34 60 37 47 Q50 52 52 68Z M49 84 Q29 79 29 66 Q43 70 49 84Z M51 102 Q31 102 26 89 Q43 90 51 102Z M57 120 Q38 125 31 114 Q46 110 57 120Z M66 136 Q48 145 40 136 Q53 126 66 136Z"/>
+            <path d="M48 68 Q63 57 62 44 Q49 49 48 68Z M47 87 Q64 77 66 63 Q51 68 47 87Z M50 105 Q68 98 73 84 Q57 88 50 105Z M58 122 Q77 119 82 106 Q66 108 58 122Z"/>
+            <path d="M288 68 Q306 60 303 47 Q290 52 288 68Z M291 84 Q311 79 311 66 Q297 70 291 84Z M289 102 Q309 102 314 89 Q297 90 289 102Z M283 120 Q302 125 309 114 Q294 110 283 120Z M274 136 Q292 145 300 136 Q287 126 274 136Z"/>
+            <path d="M292 68 Q277 57 278 44 Q291 49 292 68Z M293 87 Q276 77 274 63 Q289 68 293 87Z M290 105 Q272 98 267 84 Q283 88 290 105Z M282 122 Q263 119 258 106 Q274 108 282 122Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <h1>ESTRATÉGIAS</h1>
     <p>Assistente inteligente para criação de estratégias pedagógicas curtas, objetivas e adaptadas ao objetivo informado.</p>
   </div>
 </header>
